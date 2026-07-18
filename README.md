@@ -143,20 +143,8 @@ GROQ_API_KEY=YOUR_GROQ_API_KEY
 streamlit run app.py
 ```
 
----
+--
 
-# 📸 Screenshots
-
-Add screenshots of:
-
-- Home Page
-- AI Chat
-- Chat with PDF
-- PDF Summarizer
-- MCQ Generator
-- Viva Generator
-
----
 
 # 🎯 Future Enhancements
 
@@ -175,12 +163,6 @@ Add screenshots of:
 **Arbaaz Malik**
 
 B.Tech Computer Science Engineering
-
-GitHub:
-https://github.com/arbaazmalik
-
-LinkedIn:
-(Add your LinkedIn URL)
 
 ---
 
