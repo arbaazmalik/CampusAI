@@ -28,9 +28,9 @@ def show():
     pdf_path = None
 
     if uploaded_pdf is not None:
-
+        os.makedirs("uploads", exist_ok=True)
         pdf_path = f"uploads/{uploaded_pdf.name}"
-
+        
         with open(pdf_path, "wb") as file:
             file.write(uploaded_pdf.getbuffer())
 
