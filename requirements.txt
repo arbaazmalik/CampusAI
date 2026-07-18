@@ -5,3 +5,4 @@ pypdf
 faiss-cpu
 sentence-transformers
 langchain-text-splitters
+streamlit-option-menu
