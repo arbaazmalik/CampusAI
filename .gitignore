@@ -1,0 +1,28 @@
+
+# Virtual Environment
+.venv/
+
+# Environment Variables
+.env
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Vector Database
+vector_db/
+
+# Uploaded PDFs
+uploads/*
+!uploads/.gitkeep
+
+# Temporary Files
+temp/
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
