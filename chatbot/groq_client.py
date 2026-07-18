@@ -1,4 +1,5 @@
 import json
+import streamlit as st
 import os
 
 from groq import Groq
@@ -11,11 +12,11 @@ from chatbot.prompts import SYSTEM_PROMPT, MCQ_PROMPT
 load_dotenv()
 
 # Read API Key
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 
 if not GROQ_API_KEY:
     raise ValueError(
-        "GROQ_API_KEY not found. Please add it to your .env file."
+        "GROQ_API_KEY not found. Add it to .env (local) or Streamlit Secrets (cloud)."
     )
 
 # Initialize Groq Client
