@@ -1,60 +1,135 @@
 # 🎓 CampusAI
 
-> An AI-powered academic assistant built using Python, Streamlit, Groq Llama 3.3, RAG, and FAISS to help students learn smarter.
+> An AI-powered academic assistant that enables students to chat with AI, interact with PDF documents, generate summaries, create MCQs, and prepare for viva examinations using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG).
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)
 ![Groq](https://img.shields.io/badge/LLM-Groq_Llama_3.3-green)
+![LangChain](https://img.shields.io/badge/LangChain-RAG-success)
+![FAISS](https://img.shields.io/badge/Vector_Database-FAISS-orange)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-## 📖 Overview
+# 🚀 Live Demo
 
-CampusAI is an AI-powered academic assistant designed to simplify the learning experience for students. It enables users to chat with AI, interact with PDF documents, generate summaries, create multiple-choice questions, and prepare for viva examinations—all from a single intuitive interface.
-
-The project leverages Retrieval-Augmented Generation (RAG) to provide context-aware answers from uploaded PDF documents, making it a practical AI solution for education.
+🔗 **Streamlit App:**  
+https://campusai-nx24mexwmu84xjtznvx8gx.streamlit.app/
 
 ---
 
-## ✨ Features
+# 📖 Overview
 
-### 🤖 AI Chat
+CampusAI is an AI-powered academic assistant developed as a B.Tech Computer Science Engineering Major Project. It combines the power of Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and semantic search to provide an intelligent learning platform for students.
+
+The application allows users to interact with AI, upload PDF notes, ask context-aware questions, generate concise summaries, create multiple-choice questions, and prepare for viva examinations—all through a clean and user-friendly interface.
+
+Unlike traditional chatbots, CampusAI understands uploaded study materials using vector embeddings and semantic search, delivering accurate and context-aware responses.
+
+---
+
+# ✨ Features
+
+## 🤖 AI Chat
 - General-purpose AI assistant
 - Powered by Groq Llama 3.3 70B
-- Fast and accurate responses
+- Fast and intelligent responses
+- Supports general academic queries
 
-### 📄 Chat with PDF
-- Upload PDF documents
-- Ask questions based on document content
-- Uses RAG with FAISS vector database
+---
 
-### 📝 PDF Summarizer
+## 📄 Chat with PDF (RAG)
+- Upload study material in PDF format
+- Ask questions directly from the document
+- Context-aware answers
+- Uses Retrieval-Augmented Generation (RAG)
+- FAISS vector database for semantic search
+
+---
+
+## 📝 PDF Summarizer
 - Generate concise summaries
-- Extract key concepts
-- Save study time
+- Extract important concepts
+- Helps students revise faster
+- AI-generated structured summaries
 
-### ❓ MCQ Generator
-- Automatically generate multiple-choice questions
-- AI-generated answer options
-- Useful for self-assessment
+---
 
-### 🎤 Viva Question Generator
-- Generate viva questions from study material
-- Helps students prepare for interviews and examinations
+## ❓ MCQ Generator
+- Generate AI-powered multiple-choice questions
+- Multiple answer options
+- Correct answer included
+- Useful for self-assessment and practice
+
+---
+
+## 🎤 Viva Question Generator
+- Generate viva questions from uploaded PDFs
+- Helps prepare for project viva
+- AI-generated interview-style questions
 
 ---
 
 # 🛠️ Tech Stack
 
-- Python
+### Frontend
 - Streamlit
-- Groq API (Llama 3.3 70B)
+
+### Backend
+- Python
+
+### AI & LLM
+- Groq API
+- Llama 3.3 70B
+
+### RAG Pipeline
 - LangChain
 - FAISS
 - Sentence Transformers
+
+### PDF Processing
 - PyPDF
-- RAG (Retrieval-Augmented Generation)
+
+### Other Libraries
+- python-dotenv
+- streamlit-option-menu
+
+---
+
+# 🏗️ System Architecture
+
+```
+                User
+                  │
+                  ▼
+         Streamlit Web Interface
+                  │
+      ┌───────────┴───────────┐
+      │                       │
+      ▼                       ▼
+ AI Chat Module         PDF Processing
+                              │
+                              ▼
+                     Text Extraction
+                              │
+                              ▼
+                     Text Chunking
+                              │
+                              ▼
+                 Sentence Embeddings
+                              │
+                              ▼
+                   FAISS Vector Store
+                              │
+                              ▼
+                 Retrieval-Augmented Generation
+                              │
+                              ▼
+                      Groq Llama 3.3
+                              │
+                              ▼
+                        AI Response
+```
 
 ---
 
@@ -64,14 +139,16 @@ The project leverages Retrieval-Augmented Generation (RAG) to provide context-aw
 CampusAI/
 │
 ├── app.py
+│
 ├── chatbot/
 │   ├── groq_client.py
 │   ├── pdf_loader.py
-│   ├── rag.py
-│   ├── vector_store.py
 │   ├── text_splitter.py
-│   ├── mcq_generator.py
+│   ├── vector_store.py
+│   ├── rag.py
+│   ├── prompts.py
 │   ├── summarizer.py
+│   ├── mcq_generator.py
 │   └── viva_generator.py
 │
 ├── views/
@@ -81,10 +158,12 @@ CampusAI/
 │   ├── mcq.py
 │   └── viva.py
 │
-├── utils/
 ├── assets/
+├── utils/
+├── uploads/
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -97,29 +176,33 @@ CampusAI/
 git clone https://github.com/arbaazmalik/CampusAI.git
 ```
 
-```
+```bash
 cd CampusAI
 ```
 
-### Create Virtual Environment
+---
+
+## Create Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-Windows
+### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-Linux / Mac
+### Linux / macOS
 
 ```bash
 source .venv/bin/activate
 ```
 
-### Install Dependencies
+---
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -135,26 +218,61 @@ Create a `.env` file in the project root.
 GROQ_API_KEY=YOUR_GROQ_API_KEY
 ```
 
+Alternatively, for Streamlit Cloud deployment, add:
+
+```
+GROQ_API_KEY = YOUR_GROQ_API_KEY
+```
+
+inside **Streamlit Secrets**.
+
 ---
 
-# ▶️ Run the Project
+# ▶️ Run Locally
 
 ```bash
 streamlit run app.py
 ```
 
---
+---
 
+# 📸 Application Modules
+
+- 🤖 AI Chat
+- 📄 Chat with PDF
+- 📝 PDF Summarizer
+- ❓ MCQ Generator
+- 🎤 Viva Question Generator
+
+---
 
 # 🎯 Future Enhancements
 
-- Voice Assistant
-- OCR Support
+- Voice-enabled AI Assistant
+- OCR Support for Scanned PDFs
 - Multi-language Support
-- Chat History
 - User Authentication
-- Cloud Deployment
-- Mobile Responsive UI
+- Chat History
+- PDF Export
+- Cloud Database Integration
+- Mobile App Version
+- AI Flashcards
+- Quiz Performance Analytics
+
+---
+
+# 📚 Learning Outcomes
+
+This project demonstrates practical implementation of:
+
+- Large Language Models (LLMs)
+- Retrieval-Augmented Generation (RAG)
+- Semantic Search
+- Vector Databases (FAISS)
+- Prompt Engineering
+- LangChain
+- Streamlit Application Development
+- AI-powered Educational Systems
 
 ---
 
@@ -162,16 +280,22 @@ streamlit run app.py
 
 **Arbaaz Malik**
 
-B.Tech Computer Science Engineering
+B.Tech Computer Science & Engineering
+
+GitHub: https://github.com/arbaazmalik
+
+LinkedIn: https://www.linkedin.com/in/arbaaz-malik-2b55a92a3/
 
 ---
 
 # ⭐ Support
 
-If you found this project useful, consider giving it a ⭐ on GitHub.
+If you found this project helpful, please consider giving it a ⭐ on GitHub.
 
 ---
 
-## 📜 License
+# 📜 License
 
-This project is developed for educational purposes as a B.Tech Major Project.
+This project is licensed under the MIT License.
+
+Developed as a **B.Tech Major Project** for educational and learning purposes.
