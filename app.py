@@ -20,6 +20,15 @@ load_css()
 st.title("🎓 CampusAI")
 st.caption("Your Intelligent Academic Assistant")
 
+st.markdown(
+    """
+**Developed by**
+
+**Arbaaz Malik**  
+*Computer Science Engineer | AI Enthusiast*
+"""
+)
+
 with st.sidebar:
 
     st.markdown(
