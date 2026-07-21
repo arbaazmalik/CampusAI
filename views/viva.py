@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 
 from chatbot.viva_generator import generate_viva_questions
@@ -26,10 +28,12 @@ def show():
         value=10
     )
 
+    os.makedirs("uploads", exist_ok=True)
+
     pdf_path = f"uploads/{uploaded_pdf.name}"
 
     with open(pdf_path, "wb") as f:
-        f.write(uploaded_pdf.getbuffer())
+     f.write(uploaded_pdf.getbuffer())
 
     if st.button("🎤 Generate Viva Questions", use_container_width=True):
 

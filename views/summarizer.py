@@ -1,5 +1,12 @@
+import os
+
 import streamlit as st
 
+from chatbot.summarizer import summarize_pdf
+
+
+import os
+import streamlit as st
 from chatbot.summarizer import summarize_pdf
 
 
@@ -15,9 +22,11 @@ def show():
     )
 
     if uploaded_pdf is None:
-
         st.info("📄 Upload a PDF to generate an AI-powered summary.")
         return
+
+    # Create uploads folder if it doesn't exist
+    os.makedirs("uploads", exist_ok=True)
 
     pdf_path = f"uploads/{uploaded_pdf.name}"
 

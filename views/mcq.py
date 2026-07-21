@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 
 from chatbot.mcq_generator import generate_mcq_from_pdf
@@ -22,10 +24,12 @@ def show():
 
     if uploaded_pdf is not None:
 
-        pdf_path = f"uploads/{uploaded_pdf.name}"
+     os.makedirs("uploads", exist_ok=True)
 
-        with open(pdf_path, "wb") as f:
-            f.write(uploaded_pdf.getbuffer())
+    pdf_path = f"uploads/{uploaded_pdf.name}"
+
+    with open(pdf_path, "wb") as f:
+        f.write(uploaded_pdf.getbuffer())
 
         col1, col2 = st.columns(2)
 
