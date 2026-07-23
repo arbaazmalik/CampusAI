@@ -1,6 +1,6 @@
 import json
-import streamlit as st
 import os
+import streamlit as st
 
 from groq import Groq
 from dotenv import load_dotenv
@@ -25,7 +25,7 @@ client = Groq(api_key=GROQ_API_KEY)
 
 def generate_response(user_prompt: str) -> str:
     """
-    Generate an AI response using Groq.
+    Generate a complete AI response.
     """
 
     try:
@@ -53,7 +53,41 @@ def generate_response(user_prompt: str) -> str:
         return f"Error: {str(error)}"
 
 
-import json
+def stream_response(user_prompt: str):
+    """
+    Stream AI response in real time.
+    """
+
+    try:
+        completion = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt
+                }
+            ],
+            temperature=0.3,
+            max_tokens=4096,
+            top_p=1,
+            stream=True,
+        )
+
+        for chunk in completion:
+
+            if (
+                chunk.choices
+                and chunk.choices[0].delta
+                and chunk.choices[0].delta.content
+            ):
+                yield chunk.choices[0].delta.content
+
+    except Exception as error:
+        yield f"Error: {str(error)}"
 
 
 def generate_mcqs(content: str, num_questions: int = 10):
@@ -81,10 +115,10 @@ def generate_mcqs(content: str, num_questions: int = 10):
     text = text.replace("```json", "").replace("```", "").strip()
 
     try:
-     return json.loads(text)
+        return json.loads(text)
 
     except Exception as e:
-     print("\n========== RAW GROQ RESPONSE ==========\n")
-     print(text)
-     print("\n=======================================\n")
-     raise e
+        print("\n========== RAW GROQ RESPONSE ==========\n")
+        print(text)
+        print("\n=======================================\n")
+        raise e

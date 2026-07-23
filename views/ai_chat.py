@@ -1,6 +1,6 @@
 import streamlit as st
 
-from chatbot.groq_client import generate_response
+from chatbot.groq_client import stream_response
 
 
 def show():
@@ -33,10 +33,7 @@ def show():
 
         with st.chat_message("assistant"):
 
-            with st.spinner("Thinking..."):
-                response = generate_response(prompt)
-
-            st.markdown(response)
+            response = st.write_stream(stream_response(prompt))
 
         st.session_state["messages"].append(
             {
