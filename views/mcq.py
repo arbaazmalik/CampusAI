@@ -24,12 +24,12 @@ def show():
 
     if uploaded_pdf is not None:
 
-     os.makedirs("uploads", exist_ok=True)
+        os.makedirs("uploads", exist_ok=True)
 
-    pdf_path = f"uploads/{uploaded_pdf.name}"
+        pdf_path = f"uploads/{uploaded_pdf.name}"
 
-    with open(pdf_path, "wb") as f:
-        f.write(uploaded_pdf.getbuffer())
+        with open(pdf_path, "wb") as f:
+            f.write(uploaded_pdf.getbuffer())
 
         col1, col2 = st.columns(2)
 
@@ -43,7 +43,6 @@ def show():
                         pdf_path,
                         num_questions
                     )
-
 
                 st.session_state["submitted"] = False
 
@@ -100,7 +99,7 @@ def show():
 
             st.write(f"**Your Answer:** {selected}")
 
-            st.write(f" **Correct Answer:** {correct_option}")
+            st.write(f"**Correct Answer:** {correct_option}")
 
             if selected == correct_option:
                 st.success("✅ Correct")
