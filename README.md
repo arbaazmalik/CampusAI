@@ -298,4 +298,4 @@ If you found this project helpful, please consider giving it a ⭐ on GitHub.
 
 This project is licensed under the MIT License.
 
-Developed as a **B.Tech Major Project** for educational and learning purposes.
+Developed as a ** Generative AI Interan @IBM ** for educational and learning purposes.
