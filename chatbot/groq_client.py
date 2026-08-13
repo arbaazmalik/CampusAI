@@ -53,24 +53,25 @@ def generate_response(user_prompt: str) -> str:
         return f"Error: {str(error)}"
 
 
-def stream_response(user_prompt: str):
+def stream_response(messages):
     """
-    Stream AI response in real time.
+    Stream AI response using the complete conversation history.
     """
 
     try:
+        groq_messages = [
+            {
+                "role": "system",
+                "content": SYSTEM_PROMPT
+            }
+        ]
+
+        # Add previous conversation
+        groq_messages.extend(messages)
+
         completion = client.chat.completions.create(
             model=MODEL_NAME,
-            messages=[
-                {
-                    "role": "system",
-                    "content": SYSTEM_PROMPT
-                },
-                {
-                    "role": "user",
-                    "content": user_prompt
-                }
-            ],
+            messages=groq_messages,
             temperature=0.3,
             max_tokens=4096,
             top_p=1,
