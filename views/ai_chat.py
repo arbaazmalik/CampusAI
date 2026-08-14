@@ -10,6 +10,7 @@ def show():
 
     st.markdown('<div class="page-card">', unsafe_allow_html=True)
 
+    # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state["messages"] = []
 
@@ -19,11 +20,12 @@ def show():
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
+    # Chat input
     prompt = st.chat_input("Ask anything...")
 
     if prompt:
 
-        # Add user's message to conversation
+        # Save user message
         st.session_state["messages"].append(
             {
                 "role": "user",
@@ -31,14 +33,17 @@ def show():
             }
         )
 
+        # Display user message
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # Generate AI response using complete conversation
+        # Generate AI response with conversation history
         with st.chat_message("assistant"):
 
             response = st.write_stream(
-                stream_response(st.session_state["messages"])
+                stream_response(
+                    st.session_state["messages"]
+                )
             )
 
         # Save AI response

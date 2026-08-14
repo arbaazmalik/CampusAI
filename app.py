@@ -9,6 +9,7 @@ from utils.style import load_css
 from views.ai_chat import show as ai_chat
 from views.pdf_chat import show as pdf_chat
 
+
 st.set_page_config(
     page_title="CampusAI",
     page_icon="🎓",
@@ -17,16 +18,21 @@ st.set_page_config(
 
 load_css()
 
-st.title("🎓 CampusAI")
-st.caption("Your Intelligent Academic Assistant")
-
 st.markdown(
-    """
-**Developed by**
-
-**Arbaaz Malik**  
-*Computer Science Engineer | AI Enthusiast*
 """
+<div class="campus-header">
+<div class="campus-title">
+<h1>🎓 CampusAI</h1>
+<p>Your Intelligent Academic Assistant</p>
+</div>
+<div class="campus-developer">
+<span>Developed by</span>
+<strong>Arbaaz Malik</strong>
+<em>Computer Science Engineer | AI Enthusiast</em>
+</div>
+</div>
+""",
+unsafe_allow_html=True
 )
 
 with st.sidebar:
@@ -40,54 +46,69 @@ with st.sidebar:
     )
 
     feature = option_menu(
-    menu_title=None,
-    options=[
-        "AI Chat",
-        "Chat with PDF",
-        "MCQ Generator",
-        "PDF Summarizer",
-        "Viva Generator",
-    ],
-    icons=[
-        "chat-dots",
-        "file-earmark-pdf",
-        "patch-question",
-        "journal-text",
-        "mic",
-    ],
-    default_index=0,
-    styles={
-        "container": {
-            "padding": "8px",
-            "background-color": "#F3F1EC",
-            "border-radius": "18px",
-        },
+        menu_title=None,
+        options=[
+            "AI Chat",
+            "Chat with PDF",
+            "MCQ Generator",
+            "PDF Summarizer",
+            "Viva Generator",
+        ],
+        icons=[
+            "chat-dots",
+            "file-earmark-pdf",
+            "patch-question",
+            "journal-text",
+            "mic",
+        ],
+        default_index=0,
+        styles={
+            "container": {
+                "padding": "8px",
+                "background-color": "#F7F3EA",
+                "border-radius": "18px",
+            },
 
-        "icon": {
-            "color": "#6B5B95",
-            "font-size": "19px",
-        },
+            "icon": {
+                "color": "#2563EB",
+                "font-size": "19px",
+            },
 
-        "nav-link": {
-            "font-size": "16px",
-            "padding": "12px",
-            "margin": "6px",
-            "border-radius": "12px",
-            "color": "#2D2D2D",
-            "--hover-color": "#ECE8F8",
-        },
+            "nav-link": {
+                "font-size": "16px",
+                "padding": "12px",
+                "margin": "6px",
+                "border-radius": "12px",
+                "color": "#1F2937",
+                "--hover-color": "#E8F0FF",
+            },
 
-        "nav-link-selected": {
-            "background-color": "#6B5B95",
-            "color": "white",
-            "font-weight": "600",
+            "nav-link-selected": {
+                "background-color": "#2563EB",
+                "color": "white",
+                "font-weight": "600",
+            },
         },
-    },
-)
+    )
+
+    # New Chat button
+    if st.button(
+        "🗑️  New Chat",
+        use_container_width=True,
+        key="new_chat_sidebar",
+    ):
+        st.session_state["messages"] = []
+        st.rerun()
+
     st.markdown("---")
 
     st.caption("Powered by Groq")
     st.caption("Llama 3.3 70B")
+
+
+# -----------------------------
+# Feature Routing
+# -----------------------------
 
 if feature == "AI Chat":
     ai_chat()
