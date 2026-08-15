@@ -1,5 +1,6 @@
 import os
 import pickle
+import streamlit as st
 
 import faiss
 from sentence_transformers import SentenceTransformer
@@ -9,14 +10,18 @@ from utils.constants import (
     VECTOR_DB_FOLDER,
 )
 
-# Load embedding model
-embedding_model = SentenceTransformer(EMBEDDING_MODEL)
+
+@st.cache_resource
+def get_embedding_model():
+    return SentenceTransformer(EMBEDDING_MODEL)
 
 
 def create_vector_store(chunks):
     """
     Create and save FAISS vector database.
     """
+
+    embedding_model = get_embedding_model()
 
     embeddings = embedding_model.encode(chunks)
 
@@ -62,5 +67,7 @@ def get_embedding(text):
     """
     Convert text into embedding.
     """
+
+    embedding_model = get_embedding_model()
 
     return embedding_model.encode([text])
