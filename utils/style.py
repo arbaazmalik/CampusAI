@@ -89,9 +89,9 @@ h2,h3,h4{
 
 .campus-header{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:35px;
+    flex-direction:column;
+    align-items:flex-start;
+    margin-bottom:25px;
 }
 
 .campus-title h1{
@@ -102,31 +102,21 @@ h2,h3,h4{
 }
 
 .campus-title p{
-    margin:6px 0 0 0;
+    margin:5px 0 0 0;
     color:#64748B;
     font-size:16px;
+    white-space:nowrap;
 }
 
 .campus-developer{
-    text-align:right;
-    display:flex;
-    flex-direction:column;
-    gap:3px;
+    margin-top:6px;
+    text-align:left;
 }
 
 .campus-developer span{
     color:#64748B;
     font-size:13px;
-}
-
-.campus-developer strong{
-    color:#1F2937;
-    font-size:15px;
-}
-
-.campus-developer em{
-    color:#64748B;
-    font-size:13px;
+    font-weight:500;
 }
 
 /* ===========================
@@ -473,31 +463,47 @@ a:hover{
 @media (max-width:768px){
 
     .block-container{
-
-        padding-top:1.2rem;
-
+        padding-top:1rem;
         padding-left:1rem;
-
         padding-right:1rem;
-
     }
 
+    /* Compact Header */
+
+    .campus-header{
+        margin-bottom:20px;
+    }
+
+    .campus-title h1{
+        font-size:32px;
+    }
+
+    .campus-title p{
+        font-size:14px;
+        white-space:nowrap;
+        margin-top:4px;
+    }
+
+    .campus-developer{
+        margin-top:5px;
+    }
+
+    .campus-developer span{
+        font-size:12px;
+    }
+
+    /* Smaller AI Chat heading */
+
     h1{
-
-        font-size:1.8rem;
-
+        font-size:1.7rem;
     }
 
     h2{
-
         font-size:1.4rem;
-
     }
 
     .stButton>button{
-
         border-radius:12px;
-
     }
 
 }

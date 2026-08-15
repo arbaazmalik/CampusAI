@@ -26,9 +26,7 @@ st.markdown(
 <p>Your Intelligent Academic Assistant</p>
 </div>
 <div class="campus-developer">
-<span>Developed by</span>
-<strong>Arbaaz Malik</strong>
-<em>Computer Science Engineer | AI Enthusiast</em>
+<span>Developed by Arbaaz Malik | AI Enthusiast</span>
 </div>
 </div>
 """,
