@@ -472,6 +472,7 @@ a:hover{
 
     .campus-header{
     margin-bottom:20px;
+    padding-top:12px;
     padding-left:10px;
     padding-right:10px;
     width:100%;
@@ -511,37 +512,7 @@ a:hover{
     .stButton>button{
         border-radius:12px;
     }
-
 }
-
-    /* Mobile sidebar hint */
-
-    .mobile-sidebar-hint{
-        display:none;
-    }
-
-    @media (max-width:768px){
-
-        .mobile-sidebar-hint{
-            display:block;
-            position:fixed;
-            top:105px;
-            left:58px;
-            z-index:9999;
-
-            color:#64748B;
-            font-size:12px;
-            font-weight:500;
-
-            pointer-events:none;
-        }
-
-        /* Hide hint when sidebar is open */
-        body:has(section[data-testid="stSidebar"][aria-expanded="true"])
-        .mobile-sidebar-hint{
-            display:none;
-        }
-    }
 
 
 /* ===========================
