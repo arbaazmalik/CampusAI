@@ -17,6 +17,14 @@ st.set_page_config(
 )
 
 load_css()
+st.markdown(
+    """
+    <div class="mobile-sidebar-hint">
+        Tap for more options
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown(
 """
