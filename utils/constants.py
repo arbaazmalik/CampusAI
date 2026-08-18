@@ -2,7 +2,7 @@ APP_NAME = "CampusAI"
 
 TAGLINE = "Your Intelligent Academic Assistant"
 
-MODEL_NAME = "llama-3.3-70b-versatile"
+MODEL_NAME = "openai/gpt-oss-120b"
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 

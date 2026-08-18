@@ -91,7 +91,7 @@ with st.sidebar:
 
     # New Chat button
     if st.button(
-        "🗑️  New Chat",
+        "🗑️  New AI Chat",
         use_container_width=True,
         key="new_chat_sidebar",
     ):
@@ -101,7 +101,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.caption("Powered by Groq")
-    st.caption("Llama 3.3 70B")
+    st.caption("GPT OSS 120B")
 
 
 # -----------------------------
